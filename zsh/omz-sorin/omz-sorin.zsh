@@ -24,12 +24,12 @@ zstyle ':omz:module:terminal' auto-title 'yes'
 
 # Set the Oh My Zsh modules to load (browse modules).
 zstyle ':omz:load' omodule 'environment' 'terminal' 'editor' 'completion' \
-  'history' 'directory' 'spectrum' 'alias' 'utility' 'prompt' 'history-substring-search'
+  'history' 'directory' 'spectrum' 'utility' 'prompt' 'history-substring-search'
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':omz:module:prompt' theme 'skwp'
+zstyle ':omz:module:prompt' theme "$ZSH_THEME"
 
 # This will make you shout: OH MY ZSHELL!
 source "$OMZ/init.zsh"

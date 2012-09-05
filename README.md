@@ -77,7 +77,7 @@ Please install fonts from fonts/ directory. These are used to give a really nice
 Homebrew is _the missing package manager for OSX_. To install:
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+/usr/bin/ruby <(curl -fsSk https://raw.github.com/mxcl/homebrew/go)
 ```
 
 With homebrew installed, install some packages:
@@ -109,15 +109,16 @@ If that doesn't work, move the OSX supplied ctags [like so](http://www.mattpolit
 sudo mv /usr/bin/ctags /usr/bin/ctags_original
 ```
 
-### [oh-my-zsh](https://github.com/sorin-ionescu/oh-my-zsh)
+### [oh-my-zsh](https://github.com/sorin-ionescu/prezto)
 
-`git clone https://github.com/sorin-ionescu/oh-my-zsh.git ~/.oh-my-zsh`
-`cd ~/.oh-my-zsh && git submodule update --init --recursive`
+```bash
+git clone --recursive git://github.com/sorin-ionescu/prezto.git ~/.oh-my-zsh
+```
 
 We prefer the @sorin-ionescu rewrite of Oh My Zsh. It will eventually be shipped
 as a submodule of YADR, although you can use the original @robbyrussell version as well.
 
-You only need to do the two commands above. The rest of the installation is done
+You only need to do the one command above. The rest of the installation is done
 by YADR, which ships with a tie-in to sorin's OMZ.
 
 ### [fasd](https://github.com/clvv/fasd)
@@ -348,7 +349,6 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
  * Cmd-Space to autocomplete. Tab for snipmate snippets.
  * `Cmd-k` and `Cmd-d` to type underscores and dashes (use Shift), since they are so common in code but so far away from home row
- * `Cmd-k` and `Cmd-d` to type underscores and dashes (use Shift), since they are so common in code but so far away from home row
  * `Ctrl-l` to insert a => hashrocket (thanks @garybernhardt)
  * `,.` to go to last edit location (same as `'.`) because the apostrophe is hard on the pinky
  * `,ci` to change inside any set of quotes/brackets/etc
@@ -398,6 +398,7 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
  * `:ColorToggle` - turn on #abc123 color highlighting (useful for css)
  * `:gitv` - Git log browsers
  * `,hi` - show current Highlight group. if you don't like the color of something, use this, then use `hi! link [groupname] [anothergroupname]` in your vimrc.after to remap the color. You can see available colors using `:hi`
+ * `,yr` - view the yankring - a list of your previous copy commands. also you can paste and hit `ctrl-p` for cycling through previous copy commands
 
 #### Ruby Debugger
 
@@ -470,7 +471,7 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
  * SplitJoin - easily split up things like ruby hashes into multiple lines or join them back together. Try :SplitjoinJoin and :SplitjoinSplit or use the bindings sj(split) and sk(unsplit) - mnemonically j and k are directions down and up
  * tabularize - align code effortlessly by using :Tabularize /[character] to align by a character, or try the keymaps
- * yankring - effortless sanity for pasting. every time you yank something it goes into a buffer. after hitting p to paste, use ctrl-p or ctrl-n to cycle through the paste options. great for when you accidentally overwrite your yank with a delete
+ * yankring - effortless sanity for pasting. every time you yank something it goes into a buffer. after hitting p to paste, use ctrl-p or ctrl-n to cycle through the paste options. great for when you accidentally overwrite your yank with a delete.
  * surround - super easy quote and tag manipulation - ysiw" - sourround inner word with quotes. ci"' - change inner double quotes to single quotes, etc
  * greplace - use :Gsearch to find across many files, replace inside the changes, then :Greplace to do a replace across all matches
  * ConqueTerm - embedded fully colorful shell inside your vim
@@ -490,6 +491,7 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
  * Arpeggio - allows you to define key-chord combinations
  * IndexedSearch - when you do searches will show you "Match 2 of 4" in the status line
  * delimitMate - automatically closes quotes
+ * SearchComplete - tab completion in the / search window
  * syntastic - automatic syntax checking when you save the file
  * repeat - adds `.` (repeat command) support for complex commands like surround.vim. i.e. if you perform a surround and hit `.`, it will Just Work (vim by default will only repeat the last piece of the complex command)
  * endwise - automatically closes blocks (if/end)
@@ -500,7 +502,9 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
 ### Overriding vim settings
 
-You may use `~/.vimrc.before` for settings like the __leader__ setting. You may `~/.vimrc.after` for any additional overrides/settings.
+You may use `~/.vimrc.before` for settings like the __leader__ setting. 
+You may `~/.vimrc.after` (for those transitioning from janus) or in `~/.yadr/vim/after/.vimrc.after` for any additional overrides/settings.
+If you didn't have janus before, it is recommended to just put it in `~/.yadr/vim/after` so you can better manage your overrides.
 
 
 ### Adding your own vim plugins

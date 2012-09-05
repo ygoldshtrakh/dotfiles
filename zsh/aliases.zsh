@@ -52,6 +52,7 @@ alias gcm='git ci -m'
 alias gcim='git ci -m'
 alias gci='git ci'
 alias gco='git co'
+alias gcp='git cp'
 alias ga='git add -A'
 alias guns='git unstage'
 alias gunc='git uncommit'
@@ -100,7 +101,8 @@ alias cl='clear'
 alias gz='tar -zcvf'
 
 # Ruby
-alias c='pry -r ./config/environment'
+alias c='pry -r ./config/environment' # Rails 3
+alias co='script/console --irb=pry' # Rails 2
 alias ts='thin start'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
